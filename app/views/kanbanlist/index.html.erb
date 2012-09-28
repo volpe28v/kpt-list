@@ -1,0 +1,38 @@
+<a href="https://github.com/volpe28v/kanban-list"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+<div id="wrapper">
+<div class="hero-unit">
+  <h1>かんばんりすと</h1>
+  <p>
+    <h3>概要</h3>
+    <ul>
+      <li>「かんばんりすと」はWeb上で比較的お手軽にTodo管理を行うためのWebアプリです。</li>
+      <li>Agile界隈で話題になっている「ソフトウェアかんばん」をイメージして作りました。</li>
+    </ul>
+
+    <h3>使い方</h3>
+    <ul>
+      <li>操作の基本は「タスクを追加」「ドラッグ＆ドロップで状態変更」「チェックでDone」です。</li>
+      <li>タッチイベントにも対応していますので iPad 等でもご利用いただけます。</li>
+      <li>ブラウザは GoogleChrome, FireFox または Safari をオススメします。</li>
+    </ul>
+
+    <h3>サンプルアカウント</h3>
+    <ul>
+      <li>Email: sample@kanban.list</li>
+      <li>Pass: sample</li>
+    </ul>
+
+    <h3>ソースコード</h3>
+    <ul>
+      <li><a href=https://github.com/volpe28v/kanban-list>https://github.com/volpe28v/kanban-list</a></li>
+    </ul>
+  </p>
+
+  <p>
+    <%= link_to 'ユーザー登録', [ :new, :user_registration ] ,:class => 'btn btn-primary btn-large' %>
+    <%= link_to 'ログイン', [ :new, :user_session ],:class => 'btn btn-primary btn-large'  %>
+  </p>
+  There are <%= @all_user_count %> users and <%= @today_task_count %>/<%= @all_task_count %> [today/all] tasks in かんばんりすと.
+</div>
+</div>

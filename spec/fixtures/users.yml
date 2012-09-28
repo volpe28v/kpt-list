@@ -1,0 +1,23 @@
+1:
+  name: volpe
+  email: volpe@com
+  pass:
+  bg_img: hoge.jpg
+  layout: landscape
+  pomo: 9
+
+2:
+  name: baggio
+  email: baggio@com
+  pass:
+  bg_img: fuga.jpg
+  layout: portlate
+  pomo: 10
+
+3:
+  name: zola
+  email: zola@com
+  pass:
+  bg_img: parma.jpg
+  layout: new_faec
+  pomo: 10
