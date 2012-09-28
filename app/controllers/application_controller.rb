@@ -93,8 +93,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_task_list_html
-    session[:layout] ||= 'default'
-    render_to_string :partial => 'tasks/tasklist_' + session[:layout]
+    render_to_string :partial => 'tasks/tasklist_default'
   end
 
 end
