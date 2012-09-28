@@ -1,20 +1,20 @@
 #doing   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
-  min-height: 30px; 
+  min-height: 532px; 
   height: auto !important;
-  height: 30px;
+  height: 532px;
 }
 #waiting { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
-  min-height: 30px; 
+  min-height: 200px; 
   height: auto !important;
-  height: 30px;
+  height: 200px;
 }
 #todo_m    { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
-  min-height: 30px; 
+  min-height: 300px; 
   height: auto !important;
-  height: 30px;
+  height: 300px;
 }
 #todo_l { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
@@ -24,9 +24,9 @@
 }
 #todo_h { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
   width: 99%; 
-  min-height: 30px; 
+  min-height: 300px; 
   height: auto !important;
-  height: 30px;
+  height: 300px;
 }
 #done    {
   list-style-type: none;
@@ -400,7 +400,7 @@ table#table-01 td {
   margin-right:  2px;
   margin-left:  2px;
   margin-top: 2px;
-  margin-bottom: 14px;
+  margin-bottom: 5px;
 
   background-color: ghostwhite;
   /* firefox specific markup */
@@ -474,6 +474,16 @@ table#table-01 td {
   background-image: url('nav_f.png');
   background-repeat:repeat-x;
   background-color: #E2E8F2;
+}
+
+.memdoc_todo_m {
+  border-bottom: 1px solid #A8B8D9;
+  border-left: 1px solid #A8B8D9;
+  border-right: 1px solid #A8B8D9;
+  padding: 2px 0px;
+  border-top-width: 0;
+  -webkit-border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
 }
 
 .memdoc_todo_l {
