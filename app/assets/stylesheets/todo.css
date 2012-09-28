@@ -454,6 +454,7 @@ table#table-01 td {
   font-weight: bold;
   text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
   background-image: url('nav_f.png');
+  background-image: asset-url('nav_f.png');
   background-repeat:repeat-x;
   background-color: #E2E8F2;
   -webkit-border-top-right-radius: 8px;
