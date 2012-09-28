@@ -2,12 +2,11 @@
 
 <div id="wrapper">
 <div class="hero-unit">
-  <h1>かんばんりすと</h1>
+  <h1>ふりかえりすと</h1>
   <p>
     <h3>概要</h3>
     <ul>
-      <li>「かんばんりすと」はWeb上で比較的お手軽にTodo管理を行うためのWebアプリです。</li>
-      <li>Agile界隈で話題になっている「ソフトウェアかんばん」をイメージして作りました。</li>
+      <li>「ふりかえりすと」はWeb上で比較的お手軽にKPT管理を行うためのWebアプリです。</li>
     </ul>
 
     <h3>使い方</h3>
@@ -25,7 +24,7 @@
 
     <h3>ソースコード</h3>
     <ul>
-      <li><a href=https://github.com/volpe28v/kanban-list>https://github.com/volpe28v/kanban-list</a></li>
+      <li><a href=https://github.com/volpe28v/kpt-list>https://github.com/volpe28v/kpt-list</a></li>
     </ul>
   </p>
 
@@ -33,6 +32,6 @@
     <%= link_to 'ユーザー登録', [ :new, :user_registration ] ,:class => 'btn btn-primary btn-large' %>
     <%= link_to 'ログイン', [ :new, :user_session ],:class => 'btn btn-primary btn-large'  %>
   </p>
-  There are <%= @all_user_count %> users and <%= @today_task_count %>/<%= @all_task_count %> [today/all] tasks in かんばんりすと.
+  There are <%= @all_user_count %> users and <%= @today_task_count %>/<%= @all_task_count %> [today/all] tasks in ふりかえりすと.
 </div>
 </div>
