@@ -115,16 +115,14 @@ KanbanList.bookNavi = (function(){
 
     var lists = '';
     for(var i = 0; i < book_infos.length; i++ ){ 
-      var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
+      var active_todo_counts = book_infos[i].todo_m + book_infos[i].doing + book_infos[i].waiting;
       lists += '<li id="book_list_' + book_infos[i].id + '">' +
                  '<a href="#">' + book_infos[i].name +
                    '<table style="float:right" class="book-counts">' +
                      '<tr>' +
-                       '<td><div class="counts-active"   >' + active_todo_counts    + '</div></td>' +
-                       '<td><div class="counts todo_h" >' + book_infos[i].todo_h + '</div></td>' +
-                       '<td><div class="counts todo"   >' + book_infos[i].todo_m + '</div></td>' +
-                       '<td><div class="counts todo_l" >' + book_infos[i].todo_l + '</div></td>' +
-                       '<td><div class="counts doing"  >' + book_infos[i].doing  + '</div></td>' +
+                       '<td><div class="counts-active" >' + active_todo_counts    + '</div></td>' +
+                       '<td><div class="counts todo"   >' + book_infos[i].todo_m  + '</div></td>' +
+                       '<td><div class="counts doing"  >' + book_infos[i].doing   + '</div></td>' +
                        '<td><div class="counts waiting">' + book_infos[i].waiting + '</div></td>' +
                        '<td><div class="counts done"   >' + book_infos[i].done    + '</div></td>' +
                      '</tr>' +
