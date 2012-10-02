@@ -24,4 +24,5 @@
 //= require task_action
 //= require todo
 //= require p_timer
+//= require sanitize
 
