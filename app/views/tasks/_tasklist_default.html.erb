@@ -30,6 +30,20 @@
   <div class="span6">
     <div class="memitem">
       <div class="memproto">
+        <div class="memname_done"><center>Event</center></div>
+      </div>
+      <div class="memdoc_done">
+        <ul id="todo_h" class="droptrue">
+        <% @tasks[:todo_high_tasks].each do |task| %>
+          <%= render "tasks/task", {:task => task, :display => "block" } %>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="memitem">
+      <div class="memproto">
         <div class="memname_doing"><center>Try</center></div>
       </div>
       <div class="memdoc_doing">

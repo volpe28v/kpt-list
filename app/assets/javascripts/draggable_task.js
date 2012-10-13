@@ -21,6 +21,11 @@ KanbanList.draggableTask = (function(){
                        $(this).get(0).id,
                        $("#ms_" + update_id + "_edit").val());
       },
+    update: function(event, ui){
+      handlers.update_order($(this).get(0).id,
+                            $(this).sortable("serialize"));
+      },
+
 
     connectWith: 'ul',
     placeholder: 'ui-state-highlight',

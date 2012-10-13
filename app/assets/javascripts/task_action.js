@@ -3,12 +3,38 @@ KanbanList.taskAction = (function(){
   var draggableTask = KanbanList.draggableTask;
   var autoLoadingTimer = KanbanList.autoLoadingTimer;
   var utility = KanbanList.utility;
+  var pomodoroTimer = KanbanList.pomodoroTimer;
+
+  function display_filter(text){
+    var sanitize_text = sanitize(text);
+    var linked_text = sanitize_text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
+      function(){
+        var matched_link = arguments[1];
+        if ( matched_link.match(/(\.jpg|\.gif|\.png|\.bmp)$/)){
+          return '<img src="' + matched_link + '"/>';
+        }else{
+          return '<a href="' + matched_link + '" target="_blank" >[URL]</a>';
+        }
+      });
+
+    var prefixed_text = linked_text.replace(/^(\[.+?\])/,
+      function(){
+        var matched_prefix = arguments[1];
+        return '<span class="book-name">' + matched_prefix + '</span>';
+      });
+    prefixed_text = prefixed_text.replace(/^【(.+?)】/,
+      function(){
+        var matched_prefix = arguments[1];
+        return '<span class="book-name">[' + matched_prefix + ']</span> ';
+      });
+    return prefixed_text;
+  }
 
   function moveToDone(move_id) {
     var to_status = "done";
     var id = move_id.slice(4);
     var msg = $("#ms_" + id + "_edit" ).val();
-    $("#fixed_msg_" + id ).html(task_display_filter(msg));
+    $("#fixed_msg_" + id ).html(display_filter(msg));
 
     $("#edit_link_ms_" + id ).css("display","none");
     $("#edit_form_ms_" + id ).css("display","none");
@@ -21,6 +47,7 @@ KanbanList.taskAction = (function(){
 
     //TODO: グローバルのメソッドを呼んでいるので修正する
     sendCurrentTodo(id, to_status, msg);
+    pomodoroTimer.addDone();
   }
 
   function returnToTodo(ret_id){
@@ -71,7 +98,7 @@ KanbanList.taskAction = (function(){
   function updateToDoMsg(from, to) {
     var msg = sanitize($(from).val());
     $(from).val(msg);
-    $(to).html(task_display_filter(msg));
+    $(to).html(display_filter(msg));
 
     var id = to.slice(5);
     var status = $("#id_" + id).parent().get(0).id;
@@ -83,8 +110,8 @@ KanbanList.taskAction = (function(){
     var msg = msg_array.join('\n');
 
     $('#ms_' + id + '_edit').val(msg);
-    $('#msg_' + id ).html(task_display_filter(msg));
-    $('#fixed_msg_' + id ).html(task_display_filter(msg));
+    $('#msg_' + id ).html(display_filter(msg));
+    $('#fixed_msg_' + id ).html(display_filter(msg));
 
     $('#ms_' + id + '_edit').maxlength({
       'feedback' : '.task-chars-left'
@@ -141,7 +168,8 @@ KanbanList.taskAction = (function(){
   }
 
   return {
-    realize: realize_task
+    realize: realize_task,
+    display_filter: display_filter
   }
 }());
 

@@ -13,47 +13,40 @@ var bookNavi = KanbanList.bookNavi;
 var sendMail = KanbanList.sendMail;
 var todayMarker = KanbanList.todayMarker;
 var draggableTask = KanbanList.draggableTask;
+var filterNavi = KanbanList.filterNavi;
 
 // global
 var last_task_list_html = "";
 
-$(document).ready(function(){ 
-  // initialize menus
-  bookNavi.init();
-  sendMail.init();
-  autoLoadingTimer.init();
-  backgroundImage.init();
-
-  // initialize modules
-  draggableTask.setHandlers({receive: sendCurrentTodo});
-
-  $('a[rel=tooltip]').tooltip({ placement:"bottom"});
-  return;
-});
-
 function initForTaskList(){
-//  setSortableList();
   draggableTask.startAll();
   todayMarker.markAll();
 }
 
 function sendCurrentTodo(id, status, msg) {
-
   $("#edit_link_time_" + id ).html(utility.getTodayStr());
   $("#fixed_time_" + id ).html(utility.getTodayStr());
 
   todayMarker.markById( id );
 
   var request_str = "status=" + status + "&msg=" + sanitize(msg);
+  $.ajax({
+    type: "PUT",
+    cache: false,
+    url: "tasks/" + id,
+    data: request_str,
+    dataType: "jsonp"
+  });
+}
 
-   $.ajax({
-     type: "PUT",
-     cache: false,
-     url: "tasks/" + id,
-     data: request_str,
-     dataType: "jsonp"
-   });
-
+function sendTaskOrder(status, order){
+  var request_str = "status=" + status + "&" + order;
+  $.ajax({
+    type: "POST",
+    cache: false,
+    url: "tasks/update_order",
+    data: request_str
+  });
 }
 
 function updateCountsJson( counts_json ){
@@ -88,7 +81,6 @@ function updateTaskJson( update_task ){
     },200);
   }
 }
-
 
 function addTodoResponse(add_task_info){
   var id_str = '#id_' + add_task_info.id;
@@ -168,9 +160,8 @@ function showMailResult(data){
 }
 
 function task_display_filter(text){
-  var sanitized_text = sanitize(text);
-
-  var linked_text = sanitized_text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
+  var sanitize_text = sanitize(text);
+  var linked_text = sanitize_text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
       function(){
         var matched_link = arguments[1];
         if ( matched_link.match(/(\.jpg|\.gif|\.png|\.bmp)$/)){
@@ -208,5 +199,4 @@ function selectLayout(layout_name){
     });
   });
 }
-
 

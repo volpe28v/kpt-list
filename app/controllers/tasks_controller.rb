@@ -44,6 +44,23 @@ class TasksController < ApplicationController
     render :json => { task_counts: get_task_counts, move_task_id: 0, all_books: get_all_book_counts }, :callback => 'updateTaskJson'
   end
 
+  def update_order
+    if params[:id] == nil
+      render :text => "update_order noop"
+      return
+    end
+
+    # 並び順の変更はタイムスタンプを更新したくない
+    Task.record_timestamps = false
+    params[:id].each_with_index do |task_id,i|
+      target_task = Task.find(task_id)
+      target_task.update_attribute(:order_no, i)
+    end
+    Task.record_timestamps = true
+
+    render :text => "update_order ok"
+  end
+
   def filter_or_update
     @user_name = current_user.name
     @recent_done_num = 15
@@ -63,14 +80,14 @@ class TasksController < ApplicationController
   end
 
   def donelist
-    @tasks = current_user.tasks.by_status(:done)
+    @tasks = current_tasks.by_status(:done)
     if params[:year].blank? == false
       select_month = Time.new( params[:year], params[:month])
       @tasks = @tasks.select_month(select_month)
     end
     @tasks = @tasks.paginate(:page => params[:page], :per_page => 100)
 
-    @month_list = current_user.tasks.done_month_list
+    @month_list = current_tasks.done_month_list
   end
 
   def send_mail
