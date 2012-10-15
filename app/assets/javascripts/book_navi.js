@@ -121,9 +121,7 @@ KanbanList.bookNavi = (function(){
                    '<table style="float:right" class="book-counts">' +
                      '<tr>' +
                        '<td><div class="counts-active"   >' + active_todo_counts    + '</div></td>' +
-                       '<td><div class="counts todo_h" >' + book_infos[i].todo_h + '</div></td>' +
                        '<td><div class="counts todo"   >' + book_infos[i].todo_m + '</div></td>' +
-                       '<td><div class="counts todo_l" >' + book_infos[i].todo_l + '</div></td>' +
                        '<td><div class="counts doing"  >' + book_infos[i].doing  + '</div></td>' +
                        '<td><div class="counts waiting">' + book_infos[i].waiting + '</div></td>' +
                        '<td><div class="counts done"   >' + book_infos[i].done    + '</div></td>' +
