@@ -1,5 +1,5 @@
 class TaskMailer < ActionMailer::Base
-  default from: "KanbanList<kanbanlist.info@gmail.com>"
+  default from: "KptList<kanbanlist.info@gmail.com>"
 
   def all_tasks(user, book, addr, comment, tasks)
     @user = user
