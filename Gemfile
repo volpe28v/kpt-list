@@ -1,11 +1,11 @@
-if RUBY_VERSION =~ /1.9/
+if RUBY_VERSION =~ /^1\.9|^2\.0/
     Encoding.default_external = Encoding::UTF_8
     Encoding.default_internal = Encoding::UTF_8
 end
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -13,15 +13,15 @@ gem 'rails', '3.1.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
+  gem 'sass-rails',   "~> 3.2.3"
+  gem 'coffee-rails', "~> 3.2.1"
+  gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.1.4'
 
 gem 'will_paginate'
-gem 'devise'
+gem 'devise', '~> 2.2.3'
 gem 'rails_autolink'
 gem 'rake'
 
