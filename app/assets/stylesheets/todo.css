@@ -1,40 +1,38 @@
-#doing   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 250px; 
+body, input, select, textarea, button {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif;
+  line-height: 1.4;
+}
+
+.login-and-repo {
+  letter-spacing: 0px;
+  font-size: 22px;
+  font-weight: normal;
+  line-height: 28px;
+  margin: 0 0 8px;
+}
+
+#book_name_label {
+  font-weight: bold;
+}
+
+.github_img {
+  padding: 1px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  width: 64px;
+  height: 64px;
+  border: 1px solid #ddd;
+  float: right;
+}
+
+#doing,#waiting,#todo_m,#todo_l,#todo_h   {
+  list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+  width: 99%;
+  min-height: 250px;
   height: auto !important;
   height: 250px;
 }
-#waiting { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 250px; 
-  height: auto !important;
-  height: 250px;
-}
-#todo_m    { 
-  list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 250px; 
-  height: auto !important;
-  height: 250px;
-}
-#todo_l { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width: 99%; 
-  min-height: 30px; 
-  height: auto !important;
-  height: 30px;
-}
-#todo_h {
-  list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; 
-  width:  99%;
-  border-top:0px solid #888;
-  border-right:0px solid #333;
-  border-bottom:0px solid #333;
-  border-left:0px solid #888;
-  color: #111;
-  min-height: 250px; 
-  height: auto !important;
-  height: 250px;
-}
+
 #done    {
   list-style-type: none;
   margin: 0px 0px 0px 0px;
@@ -46,55 +44,10 @@
   border-bottom:0px solid #333;
   border-left:0px solid #888;
   color: #111;
-  min-height: 30px; 
+  min-height: 374px;
   height: auto !important;
-  height: 30px;
+  height: 374px;
 }
-
-.task_elem {
-  -webkit-box-shadow: 0px 0px 0px #444;
-  box-shadow: 0px 0px 0px #444;
-  -webkit-transition-property: -webkit-box-shadow;
-  -webkit-transition-duration: 0.2s;
-  -webkit-transition-timing-function: default;
-  -moz-transition-property: box-shadow;
-  -moz-transition-duration: 0.2s;
-  -moz-transition-timing-function: default;
-}
-
-.task_elem:hover {
-  -webkit-box-shadow: 0px 5px 15px #444;
-  box-shadow: 0px 5px 15px #444;
-  -webkit-transition-property: -webkit-box-shadow;
-  -webkit-transition-duration: 0.2s;
-  -webkit-transition-timing-function: default;
-  -moz-transition-property: box-shadow;
-  -moz-transition-duration: 0.2s;
-  -moz-transition-timing-function: default;
-}
-
-.edit-footer {
-  height: 32px;
-}
-
-.task-chars-left {
-  float: left;
-  margin-left: 10px;
-  font-weight: bold;
-  color: #777;
-}
-
-.task-chars-left-add-form {
-  margin-left: 5px;
-  font-weight: bold;
-  color: #777;
-}
-
-.edit-control {
-  float: right;
-  margin-right: 5px;
-}
-
 
 .doinglist   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; width: 98%; }
 .donelist    {
@@ -136,15 +89,24 @@ li {
   -webkit-border-top-right-radius: 6px;
   -webkit-border-bottom-left-radius: 6px;
   -webkit-border-bottom-right-radius: 6px;
-
 }
 
-#doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{ 
-  margin: 0px 2px 2px 2px; 
-  font-weight: bold; 
-  font-size: 12px; 
+.task_elem:hover {
+  -webkit-box-shadow: 0px 5px 15px #444;
+  box-shadow: 0px 5px 15px #444;
+}
+
+.task_elem{
+  -webkit-box-shadow: 0px 1px 8px #888;
+  box-shadow: 0px 1px 8px #888;
+}
+
+#doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{
+  margin: 0px 2px 2px 2px;
+  font-weight: bold;
+  font-size: 14px;
   text-decoration:none;
-  padding: 1px; 
+  padding: 3px 1px;
   background-position: center bottom;
   background-repeat:  repeat;
 }
@@ -165,7 +127,7 @@ li {
   cursor: pointer;
 }
 
-#waiting li { 
+#waiting li {
   border-top:1px solid #aa6;
   border-right:2px solid #773;
   border-bottom:2px solid #773;
@@ -181,7 +143,7 @@ li {
   cursor: pointer;
 }
 
-#todo_m li, #todo_l li{ 
+#todo_h li, #todo_m li, #todo_l li{
   border-top:1px solid #6b7;
   border-right:2px solid #384;
   border-bottom:2px solid #384;
@@ -197,7 +159,7 @@ li {
   cursor: pointer;
 }
 
-#todo_h li, #done li {
+#done li {
   border-top:1px solid #aaa;
   border-right:2px solid #555;
   border-bottom:2px solid #555;
@@ -206,7 +168,7 @@ li {
 
   /* For WebKit (Safari, Google Chrome etc) */
   background: -webkit-gradient(linear, left top, left bottom, from(#F6F6F6), to(#C2C2C2));
-  /* For Mozilla/Gecko (Firefox etc) */ 
+  /* For Mozilla/Gecko (Firefox etc) */
   background: -moz-linear-gradient(top, #F6F6F6, #C2C2C2);
 
   color: #444;
@@ -222,7 +184,7 @@ li {
   z-index:100;
 }
 
-.doing{ 
+.doing{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -326,6 +288,10 @@ li {
   background: -moz-linear-gradient(top, #cdc, #00FF00);
 }
 
+td.todo_h, td.todo, td.todo_l, td.doing, td.waiting, td.done{
+  text-align: right;
+}
+
 h2.doing{
   margin: 0.5em 2% 0.0em 5px;
   padding: 0.3em 0.5em 0.2em 0.5em;
@@ -340,7 +306,7 @@ h2.waiting{
   padding: 0.3em 0.5em 0.2em 0.5em;
   border-style: solid;
   border-width: 0 0 2px 25px;
-  border-color: #EfEfAb; 
+  border-color: #EfEfAb;
   font-size: 18px;
 }
 
@@ -431,6 +397,7 @@ table#table-01 td {
 
 .counts {
   color: black;
+  width: 18px;
   font-size: 6pt;
   font-weight: bold;
   text-shadow: 1px 1px 1px rgba(200, 200, 200, 0.9);
@@ -452,9 +419,9 @@ table#table-01 td {
 
   background-color: ghostwhite;
   /* firefox specific markup */
-  -moz-box-shadow: rgba(0, 0, 0, 0.40) 0px 5px 15px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.70) 0px 5px 15px;
   /* webkit specific markup */
-  -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.40);
+  -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.70);
 
   -webkit-border-top-right-radius: 8px;
   -webkit-border-top-left-radius: 8px;
@@ -524,16 +491,6 @@ table#table-01 td {
   background-color: #E2E8F2;
 }
 
-.memdoc_todo_m {
-  border-bottom: 1px solid #A8B8D9;
-  border-left: 1px solid #A8B8D9;
-  border-right: 1px solid #A8B8D9;
-  padding: 2px 0px;
-  border-top-width: 0;
-  -webkit-border-bottom-right-radius: 8px;
-  -webkit-border-bottom-left-radius: 8px;
-}
-
 .memdoc_todo_l {
   border-bottom: 1px solid #A8B8D9;
   border-left: 1px solid #A8B8D9;
@@ -576,6 +533,28 @@ table#table-01 td {
   background-color: #ff9;
 }
 
+.edit-footer {
+  height: 32px;
+}
+
+.task-chars-left {
+  float: left;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #777;
+}
+
+.edit-control {
+  float: right;
+  margin-right: 5px;
+}
+
+.task-chars-left-add-form {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #777;
+}
+
 .sign {
   font-weight: bold;
   font-size: 10pt;
@@ -599,6 +578,8 @@ table#table-01 td {
   font-size: 11px;
   font-style: normal;
   font-weight: normal;
+
+  text-shadow: 0px 1px 1px white;
 }
 
 #loading_msg_area {
@@ -609,15 +590,56 @@ table#table-01 td {
   background-color: white;
 }
 
+#p_timer_clock {
+  margin: 0 10px;
+}
+
+#p_min, #p_sec, #p_delim {
+  color: tomato;
+  text-shadow: 1px 1px 2px gray;
+}
+
+#p_min {
+  font-size: 36px;
+  margin-left: 10px;
+}
+
+#p_sec, #p_delim {
+  font-size: 12px;
+}
+
+#pomo_done_num {
+  margin-left: 15px;
+  font-size: 24px;
+  color: dodgerblue;
+  text-shadow: 1px 1px 2px gray;
+}
+
 footer {
   width: 100%;
-  margin-top: 4px;                                                                    
+  margin-top: 4px;
   padding: 20px 0;
   text-align: right;
-  border-top: 1px solid #DDD; 
+  border-top: 1px solid #DDD;
 }
 
 footer span{
   margin-right: 20px;
 }
 
+.icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+
+.zero {
+  color: #aaa;
+}
+
+.msg-detail {
+  font-size: 12px;
+  font-weight: normal;
+  color: #555;
+}
