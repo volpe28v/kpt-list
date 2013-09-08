@@ -73,6 +73,29 @@
   -moz-transition-timing-function: default;
 }
 
+.edit-footer {
+  height: 32px;
+}
+
+.task-chars-left {
+  float: left;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #777;
+}
+
+.task-chars-left-add-form {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #777;
+}
+
+.edit-control {
+  float: right;
+  margin-right: 5px;
+}
+
+
 .doinglist   { list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa; width: 98%; }
 .donelist    {
   list-style-type: none;
@@ -551,19 +574,6 @@ table#table-01 td {
 
 #prefix,#add_todo_form_msg  {
   background-color: #ff9;
-}
-
-.task-chars-left {
-  float: right;
-  margin-right: 10px;
-  font-weight: bold;
-  color: #777;
-}
-
-.task-chars-left-add-form {
-  margin-left: 5px;
-  font-weight: bold;
-  color: #777;
 }
 
 .sign {
