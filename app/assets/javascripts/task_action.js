@@ -6,28 +6,36 @@ KanbanList.taskAction = (function(){
   var pomodoroTimer = KanbanList.pomodoroTimer;
 
   function display_filter(text){
-    var sanitize_text = sanitize(text);
-    var linked_text = sanitize_text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
+    // for sanitize
+    var filtered_text = sanitize(text);
+
+    // for url
+    filtered_text = filtered_text.replace(/((https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+))/g,
       function(){
         var matched_link = arguments[1];
         if ( matched_link.match(/(\.jpg|\.gif|\.png|\.bmp)$/)){
           return '<img src="' + matched_link + '"/>';
         }else{
-          return '<a href="' + matched_link + '" target="_blank" >[URL]</a>';
+          return '<a class="btn btn-mini btn-inverse" href="' + matched_link + '" target="_blank">URL</a>';
         }
       });
 
-    var prefixed_text = linked_text.replace(/^(\[.+?\])/,
+    // for prefix
+    filtered_text = filtered_text.replace(/^(\[.+?\])/,
       function(){
         var matched_prefix = arguments[1];
         return '<span class="book-name">' + matched_prefix + '</span>';
       });
-    prefixed_text = prefixed_text.replace(/^【(.+?)】/,
+    filtered_text = filtered_text.replace(/^【(.+?)】/,
       function(){
         var matched_prefix = arguments[1];
         return '<span class="book-name">[' + matched_prefix + ']</span> ';
       });
-    return prefixed_text;
+
+    // for new line
+    filtered_text = filtered_text.replace(/\n+$/g,'');
+    filtered_text = filtered_text.replace(/\n/g,'<br>');
+    return filtered_text;
   }
 
   function moveToDone(move_id) {
