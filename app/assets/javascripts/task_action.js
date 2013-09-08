@@ -104,8 +104,10 @@ KanbanList.taskAction = (function(){
     var status = $("#id_" + id).parent().get(0).id;
     //TODO: グローバルのメソッドを呼んでいるので修正する
     sendCurrentTodo(id, status, msg);
+    edit_before_msg[id] = $('#ms_' + id + '_edit').val();
   }
  
+  var edit_before_msg = {};
   function realize_task(id, msg_array){
     var msg = msg_array.join('\n');
 
@@ -137,32 +139,40 @@ KanbanList.taskAction = (function(){
       return false;
     });
 
-    $('#edit_button_' + id ).click(function(){
+    function goToEditMode(id){
       autoLoadingTimer.stop();
       draggableTask.stopByElem($('#id_' + id ).parent());
 
-      var org_msg = $('#ms_' + id + '_edit').val();
+      edit_before_msg[id] = $('#ms_' + id + '_edit').val();
 
       utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
       $('#ms_' + id + '_edit').get(0).focus();
 
-      $('#edit_form_' + id ).submit(function(){
-        autoLoadingTimer.start();
-        draggableTask.startByElem($('#id_' + id ).parent());
-        updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
-        utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
-        return false;
-      });
+      return false;
+    }
 
-      $('#edit_cancel_' + id ).click(function(){
-        autoLoadingTimer.start();
-        draggableTask.startByElem($('#id_' + id ).parent());
+    $('#edit_button_' + id ).click(function(){
+      return goToEditMode(id);
+    });
 
-        $('#ms_' + id + '_edit').val(org_msg);
-        utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
-        return false;
-      });
+    $('#id_' + id ).dblclick( function(){
+      return goToEditMode(id);
+    });
 
+    $('#edit_form_' + id ).submit(function(){
+      autoLoadingTimer.start();
+      draggableTask.startByElem($('#id_' + id ).parent());
+      updateToDoMsg('#ms_' + id + '_edit', '#msg_' + id );
+      utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
+      return false;
+    });
+
+    $('#edit_cancel_' + id ).click(function(){
+      autoLoadingTimer.start();
+      draggableTask.startByElem($('#id_' + id ).parent());
+
+      $('#ms_' + id + '_edit').val(edit_before_msg[id]);
+      utility.toggleDisplay('edit_form_ms_' + id ,'edit_link_ms_' + id );
       return false;
     });
   }
