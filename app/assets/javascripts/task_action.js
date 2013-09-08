@@ -159,6 +159,14 @@ KanbanList.taskAction = (function(){
       return goToEditMode(id);
     });
 
+    $('#edit_form_' + id ).on('keydown', function(event){
+      if( event.ctrlKey === true && event.which === 13 ){
+        $(this).submit();
+        return false;
+      }
+      return true;
+    });
+
     $('#edit_form_' + id ).submit(function(){
       autoLoadingTimer.start();
       draggableTask.startByElem($('#id_' + id ).parent());
