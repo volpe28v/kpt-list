@@ -4,7 +4,7 @@
 <div class="sorttime" alt="<%= task.updated_at %>" id="ms_notyet_<%= task.id %>">
     <div class="citem_editable">
       <div id="edit_link_ms_<%= task.id %>" style="display:<%= done == false ? "block" : "none" %>">
-        <table cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="16px">
+        <table class="task-tool-active-area" cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="16px">
           <input type="checkbox" id="check_done_<%= task.id %>"/>
         </td><td class="taskLabel" align="left" width="10px">
           <font color="#00008B" style="font-size:10px;font-weight:normal;" ><span class="label label-info" id="edit_link_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
@@ -12,7 +12,7 @@
           <div id="msg_<%= task.id %>" style="display:inline;"></div>&nbsp;
         </td><td align="right" width="40px">
         <div id="ms_<%= task.id %>_menu" style="display:inline;">
-          <span class="s12">
+          <span class="task-tool" style="display: none">
             <i id="edit_button_<%= task.id %>" class="icon-pencil"></i>
             <i id="delete_button_<%= task.id %>" class="icon-trash"></i>
           </span>
@@ -36,14 +36,16 @@
 
   <%# for done display %>
       <div id="fixed_<%= task.id %>" style="display:<%= done == false ? "none" : "block" %>">
-        <table width="100%"><tr><td align="left" width="10px">
+        <table class="task-tool-active-area" width="100%"><tr><td align="left" width="10px">
           <input type="checkbox" id="check_return_<%= task.id %>" checked="checked"/>
         </td><td align="left" width="10px">
         <font color="#00008B" style="font-size:10px;font-weight:normal;"><span class="label" id="fixed_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
         </td><td class="taskLabel" align="left">
               <div id="fixed_msg_<%= task.id %>" style="display:inline;"></div>
         </td><td align="right" width="40px">
-          <i id="fixed_delete_button_<%= task.id %>" class="icon-trash"></i>
+          <span class="task-tool" style="display: none">
+            <i id="fixed_delete_button_<%= task.id %>" class="icon-trash"></i>
+          </span>
         </td></tr></table>
       </div>
     </div>

@@ -120,6 +120,15 @@ KanbanList.taskAction = (function(){
   function realize_task(id, msg_array){
     var msg = msg_array.join('\n');
 
+    $(".task-tool-active-area").hover(
+      function(){
+        $(this).find(".task-tool").css("display","block");
+      },
+      function(){
+        $(this).find(".task-tool").css("display","none");
+      }
+    );
+
     $('#ms_' + id + '_edit').val(msg);
     $('#msg_' + id ).html(display_filter(msg));
     $('#fixed_msg_' + id ).html(display_filter(msg));
