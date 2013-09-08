@@ -4,6 +4,7 @@ KanbanList.taskAction = (function(){
   var autoLoadingTimer = KanbanList.autoLoadingTimer;
   var utility = KanbanList.utility;
   var pomodoroTimer = KanbanList.pomodoroTimer;
+  var MIN_HEIGHT = 100;
 
   function display_filter(text){
     // for sanitize
@@ -147,6 +148,8 @@ KanbanList.taskAction = (function(){
       return false;
     });
 
+    $('#ms_' + id + '_edit').autofit({min_height: MIN_HEIGHT});
+
     function goToEditMode(id){
       autoLoadingTimer.stop();
       draggableTask.stopByElem($('#id_' + id ).parent());
@@ -155,6 +158,7 @@ KanbanList.taskAction = (function(){
 
       utility.toggleDisplay('edit_link_ms_' + id ,'edit_form_ms_' + id );
       $('#ms_' + id + '_edit').get(0).focus();
+      $('#ms_' + id + '_edit').trigger('keyup'); //call autofit
 
       return false;
     }
