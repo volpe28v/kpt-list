@@ -54,6 +54,17 @@ KanbanList.addTodoForm = (function(){
     return false;
   }
 
+  function hideTemporarily(){
+    if ($("#temporarily_column").css("display") != "none"){
+      $("#temporarily_column").fadeOut("fast",function(){
+        $("#keep_column").removeClass("span4");
+        $("#try_column").removeClass("span4");
+        $("#keep_column").addClass("span6");
+        $("#try_column").addClass("span6");
+      });
+    }
+  }
+
   function init(){
     $("#add_todo_form_msg").maxlength({
       'feedback' : '.task-chars-left-add-form'
@@ -70,12 +81,7 @@ KanbanList.addTodoForm = (function(){
 
     $("#show_temporarily").click(function(){
       if (!showTemporarily()){
-        $("#temporarily_column").fadeOut("fast",function(){
-          $("#keep_column").removeClass("span4");
-          $("#try_column").removeClass("span4");
-          $("#keep_column").addClass("span6");
-          $("#try_column").addClass("span6");
-        });
+        hideTemporarily();
       }
     });
 
@@ -85,7 +91,8 @@ KanbanList.addTodoForm = (function(){
   return {
     //public
     init: init,
-    showTemporarily: showTemporarily
+    showTemporarily: showTemporarily,
+    hideTemporarily: hideTemporarily
   }
 }());
 

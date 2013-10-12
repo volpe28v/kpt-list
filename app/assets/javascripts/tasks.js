@@ -69,6 +69,10 @@ function sendCurrentTodo(id, status, msg) {
     data: request_str,
     dataType: "jsonp"
   });
+
+  if ($("#todo_m").find("li").length <= 0){
+    addTodoForm.hideTemporarily();
+  }
 }
 
 function sendTaskOrder(status, order){
