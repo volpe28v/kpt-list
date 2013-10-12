@@ -1,4 +1,7 @@
-$(document).ready(function(){ 
+// AddTodoForm 
+KanbanList.namespace('addTodoForm');
+
+KanbanList.addTodoForm = (function(){
   function addTodoWithPrefix( prefix, msg ){
     if ( msg == "" ){
       return;
@@ -39,35 +42,50 @@ $(document).ready(function(){
     });
   }
  
-  $("#add_todo_form_msg").maxlength({
-    'feedback' : '.task-chars-left-add-form'
-  });
-
-  $("#add_todo_form").submit(function(){
-    addTodoAction();
-    return false;
-  });
-
-  $("#add_todo_button").click(function(){
-    addTodoAction();
-  });
-
-  $("#show_temporarily").click(function(){
+  function showTemporarily(){
     if ($("#temporarily_column").css("display") == "none"){
-      $("#temporarily_column").fadeIn();
       $("#keep_column").removeClass("span6");
       $("#try_column").removeClass("span6");
       $("#keep_column").addClass("span4");
       $("#try_column").addClass("span4");
-    }else{
-      $("#temporarily_column").fadeOut("fast",function(){
-        $("#keep_column").removeClass("span4");
-        $("#try_column").removeClass("span4");
-        $("#keep_column").addClass("span6");
-        $("#try_column").addClass("span6");
-      });
+      $("#temporarily_column").fadeIn();
+      return true;
     }
-  });
+    return false;
+  }
 
-  filterTask("");
-});
+  function init(){
+    $("#add_todo_form_msg").maxlength({
+      'feedback' : '.task-chars-left-add-form'
+    });
+
+    $("#add_todo_form").submit(function(){
+      addTodoAction();
+      return false;
+    });
+
+    $("#add_todo_button").click(function(){
+      addTodoAction();
+    });
+
+    $("#show_temporarily").click(function(){
+      if (!showTemporarily()){
+        $("#temporarily_column").fadeOut("fast",function(){
+          $("#keep_column").removeClass("span4");
+          $("#try_column").removeClass("span4");
+          $("#keep_column").addClass("span6");
+          $("#try_column").addClass("span6");
+        });
+      }
+    });
+
+    filterTask("");
+  }
+
+  return {
+    //public
+    init: init,
+    showTemporarily: showTemporarily
+  }
+}());
+
