@@ -124,7 +124,7 @@ function updateBookJson(book_info){
   $('#task_list').html(book_info.task_list_html);
   ajaxLoader.stop();
 
-  $('#book_name_label').text(book_info.book_name);
+  $('#add_todo_form_msg').attr('placeholder',book_info.book_name);
   $('#prefix').val(book_info.prefix);
 
   bookNavi.updateByJson(book_info.all_books);

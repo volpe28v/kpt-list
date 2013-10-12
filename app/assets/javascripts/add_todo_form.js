@@ -52,5 +52,22 @@ $(document).ready(function(){
     addTodoAction();
   });
 
+  $("#show_temporarily").click(function(){
+    if ($("#temporarily_column").css("display") == "none"){
+      $("#temporarily_column").fadeIn();
+      $("#keep_column").removeClass("span6");
+      $("#try_column").removeClass("span6");
+      $("#keep_column").addClass("span4");
+      $("#try_column").addClass("span4");
+    }else{
+      $("#temporarily_column").fadeOut("fast",function(){
+        $("#keep_column").removeClass("span4");
+        $("#try_column").removeClass("span4");
+        $("#keep_column").addClass("span6");
+        $("#try_column").addClass("span6");
+      });
+    }
+  });
+
   filterTask("");
 });

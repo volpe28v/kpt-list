@@ -6,17 +6,8 @@
       <div id="edit_link_ms_<%= task.id %>" style="display:<%= done == false ? "block" : "none" %>">
         <table class="task-tool-active-area" cellpadding=0 cellpadding=0 hspace=0 vspace=0 width="100%"><tr><td align="center" width="16px">
           <input type="checkbox" id="check_done_<%= task.id %>"/>
-        </td><td class="taskLabel" align="left" width="10px">
-          <font color="#00008B" style="font-size:10px;font-weight:normal;" ><span class="label label-info" id="edit_link_time_<%= task.id %>" style="display:inline;"><%= task.updated_at.strftime("%m/%d") %></span></font>&nbsp;
         </td><td class="taskLabel" align="left">
           <div id="msg_<%= task.id %>" style="display:inline;"></div>&nbsp;
-        </td><td align="right" width="40px">
-        <div id="ms_<%= task.id %>_menu" style="display:inline;">
-          <span class="task-tool" style="display: none">
-            <i id="edit_button_<%= task.id %>" class="icon-pencil"></i>
-            <i id="delete_button_<%= task.id %>" class="icon-trash"></i>
-          </span>
-        </div>
         </td></tr></table>
       </div>
 
@@ -27,6 +18,7 @@
           <div class="edit-footer">
             <span class="task-chars-left"></span>
             <span class="edit-control">
+              <i id="delete_button_<%= task.id %>" class="icon-trash"></i>
               <input type="submit" id="edit_cancel_<%= task.id %>" class="btn" value="Cancel" style="font-size:10px" tabindex=4 />
               <input type="submit" class="btn btn-primary" value="OK" style="font-size:10px" tabindex=2 />
             </span>

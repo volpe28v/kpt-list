@@ -25,7 +25,15 @@ body, input, select, textarea, button {
   float: right;
 }
 
-#doing,#waiting,#todo_m,#todo_l,#todo_h   {
+#todo_m {
+  list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
+  width: 99%;
+  min-height: 550px;
+  height: auto !important;
+  height: 550px;
+}
+
+#doing,#waiting,#todo_l,#todo_h   {
   list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
   width: 99%;
   min-height: 250px;

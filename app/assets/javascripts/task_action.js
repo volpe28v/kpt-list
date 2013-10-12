@@ -148,6 +148,9 @@ KanbanList.taskAction = (function(){
     });
 
     $('#delete_button_' + id ).click(function(){
+      autoLoadingTimer.start();
+      draggableTask.startByElem($('#id_' + id ).parent());
+
       deleteTodo('#id_' + id );
       return false;
     });
