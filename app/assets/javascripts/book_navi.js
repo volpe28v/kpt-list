@@ -8,22 +8,21 @@ KanbanList.bookNavi = (function(){
   // private
   function newBookAction(book_name){
     autoLoadingTimer.stop();
-    var request_str = "book_name=" + book_name;
-
     ajaxLoader.start(function(){
       $.ajax({
-         type: "POST",
-         cache: false,
-         url: "books",
-         data: request_str,
-         dataType: "jsonp"
+        type: "POST",
+        cache: false,
+        url: "books",
+        data: {
+          book_name: book_name
+        },
+        dataType: "jsonp"
       });
     });
   }
 
   function selectBookAction(book_id){
     autoLoadingTimer.stop();
-
     ajaxLoader.start(function(){
       $.ajax({
         type: "GET",
@@ -34,25 +33,21 @@ KanbanList.bookNavi = (function(){
     });
   }
 
-  function setAction(book_infos){
+  function setAction(){
     initNewBookAction();
     initRemoveBookAction();
 
-    for(var i = 0; i < book_infos.length; i++ ){ 
-      $('#book_list_' + book_infos[i].id + ' a').click(function(){
-        var book_id = book_infos[i].id;
-        return function(){
-          selectBookAction( book_id );
-        }
-      }());
-    }
+    $('.book_item a').click(function(){
+      var book_id = $(this).data('book_id');
+      selectBookAction( book_id );
+    });
   }
 
   function initNewBookAction(){
     $('#new_book').click(function(){
       $('#book_in').modal('show');
       setTimeout(function(){
-        $('#book_name').val('');      
+        $('#book_name').val('');
         $('#book_name').focus();
       },500);
     });
@@ -87,11 +82,15 @@ KanbanList.bookNavi = (function(){
       $('#remove_book_in').modal('hide');
 
       var dummy_id = 0
+      var filter = $('#filter_str').get(0).value;
       ajaxLoader.start(function(){
         $.ajax({
           type: "DELETE",
           cache: false,
           url: "books/" + dummy_id,
+          data: {
+            filter: filter
+          },
           dataType: "jsonp"
         });
       });
@@ -100,26 +99,63 @@ KanbanList.bookNavi = (function(){
     $('#remove_book_cancel_button').click(function(){
       $('#remove_book_in').modal('hide');
     });
+
+    // Cancel other click event handler
+    $(document).on('click', '#search-books', function() {
+      return false;
+    });
+
+    // Seach book
+    $(document).on('keyup', '#search-books', function() {
+      var text = $(this).val();
+
+      if (!text) {
+        $('#book_list .book_item').show();
+        return;
+      }
+
+      var query = new RegExp(text, 'i');
+
+      $('#book_list .book_item').each(function() {
+        var book_name = $(this).data('book_name');
+        if (query.test(book_name)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
   }
 
   function updateByJson( book_infos ){
     if ( book_infos == null ){ return; }
-    var header = '<li><a id="new_book" href="#"><i class="icon-plus"></i> New Book</a></li>' + 
+    var header = '<li><a id="new_book" href="#"><i class="icon-plus"></i> New Book</a></li>' +
                '<li><a id="remove_book" href="#"><i class="icon-trash"></i> Remove Current Book</a></li>' +
-               '<li class="divider"></li>'; 
+               '<li class="divider"></li>';
 
     var lists = '';
-    for(var i = 0; i < book_infos.length; i++ ){ 
+    lists += '<li><a><input id="search-books" class="search-query span3" placeholder="Search..."/></a></li>';
+
+    for(var i = 0; i < book_infos.length; i++ ){
       var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
-      lists += '<li id="book_list_' + book_infos[i].id + '">' +
-                 '<a href="#">' + book_infos[i].name +
-                   '<table style="float:right" class="book-counts">' +
+      lists += '<li class="book_item" data-book_name="' + book_infos[i].name + '">' +
+                 '<a href="#" data-book_id="' + book_infos[i].id + '">' +
+                   '<table width="100%">' +
                      '<tr>' +
-                       '<td><div class="counts-active"   >' + active_todo_counts    + '</div></td>' +
-                       '<td><div class="counts todo"   >' + book_infos[i].todo_m + '</div></td>' +
-                       '<td><div class="counts doing"  >' + book_infos[i].doing  + '</div></td>' +
-                       '<td><div class="counts waiting">' + book_infos[i].waiting + '</div></td>' +
-                       '<td><div class="counts done"   >' + book_infos[i].done    + '</div></td>' +
+                       '<td style="text-align: left">' + book_infos[i].name + '</td>' +
+                       '<td style="text-align: right">' +
+                         '<table style="float:right" class="book-counts">' +
+                           '<tr>' +
+                             '<td><div class="counts-active" >' + active_todo_counts   + '</div></td>' +
+                             '<td><div class="counts todo_h '  + (book_infos[i].todo_h == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_h  + '</div></td>' +
+                             '<td><div class="counts todo_m '  + (book_infos[i].todo_m == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_m  + '</div></td>' +
+                             '<td><div class="counts todo_l '  + (book_infos[i].todo_l == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_l  + '</div></td>' +
+                             '<td><div class="counts doing '   + (book_infos[i].doing == 0 ? 'zero' : '')   + '" >' + book_infos[i].doing   + '</div></td>' +
+                             '<td><div class="counts waiting ' + (book_infos[i].waiting == 0 ? 'zero' : '') + '" >' + book_infos[i].waiting + '</div></td>' +
+                             '<td><div class="counts done '    + (book_infos[i].done == 0 ? 'zero' : '')    + '" >' + book_infos[i].done    + '</div></td>' +
+                           '</tr>' +
+                         '</table>' +
+                       '</td>' +
                      '</tr>' +
                    '</table>' +
                  '</a>' +
@@ -129,15 +165,12 @@ KanbanList.bookNavi = (function(){
     $('#book_list').empty();
     $('#book_list').append(header + lists);
 
-    setAction(book_infos);
+    setAction();
   }
- 
+
   return {
     // public
     init: init,
     updateByJson: updateByJson
   }
 }());
-
-
-

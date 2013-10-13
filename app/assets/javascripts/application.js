@@ -6,10 +6,10 @@
 //
 //= require jquery.min
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery-ui
 //= require jquery.alerts
 //= require jquery.cookie
 //= require jquery.maxlength
 //= require jquery.autofit
-//= require bootstrap.min
 

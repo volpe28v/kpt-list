@@ -160,6 +160,11 @@ GEM
       polyglot (>= 0.3.1)
     turn (0.9.6)
       ansi
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
@@ -190,5 +195,6 @@ DEPENDENCIES
   sqlite3-ruby
   therubyracer
   turn
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   will_paginate
