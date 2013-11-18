@@ -3,7 +3,7 @@ KanbanList.namespace('sendMail');
 KanbanList.sendMail = (function(){
 
   var COOKIE_EXPIRES = 365;
-  var COOKIE_MAIL_ADDR = 'kanbanlist_mail_addr';
+  var COOKIE_MAIL_ADDR = 'kptlist_mail_addr';
 
   function init(){
     var addr = $.cookie(COOKIE_MAIL_ADDR);
