@@ -4,7 +4,7 @@ KanbanList.namespace('backgroundImage');
 KanbanList.backgroundImage = (function(){
   // private
   var COOKIE_EXPIRES = 365;
-  var COOKIE_BG_IMAGE = 'kanbanlist_bg_image_url';
+  var COOKIE_BG_IMAGE = 'kptlist_bg_image_url';
 
   function setBgImage(image_url){
     $("#body_core").css('background-image','url(' + image_url + ')');
