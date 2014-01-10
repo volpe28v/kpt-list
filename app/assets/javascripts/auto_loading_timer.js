@@ -7,16 +7,13 @@ KanbanList.autoLoadingTimer = (function(){
   var stack = 0;
   var timer_id = null;
 
-  function loadLatestTasks(filter_str){
+  function loadLatestTasks(){
     if ($('#add_todo_form_msg').val() != ""){ return; };
-
-    var request_str = "filter=" + filter_str;
 
     $.ajax({
        type: "POST",
        cache: false,
        url: "tasks/silent_update",
-       data: request_str,
        dataType: "jsonp"
     });
   }
@@ -53,14 +50,14 @@ KanbanList.autoLoadingTimer = (function(){
     if ( !isValid() ){ return; }
     stack++;
     if ( stack != 1 ){ return; }
-    timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+    timer_id = setInterval( function() { loadLatestTasks(); },5000 );
   }
 
   function startForce(){
     if ( !isValid() ){ return; }
     stack = 1;
     clearInterval(timer_id);
-    timer_id = setInterval( function() { loadLatestTasks( $('#filter_str').get(0).value ); },5000 );
+    timer_id = setInterval( function() { loadLatestTasks(); },5000 );
   }
 
   function stop(){
@@ -69,11 +66,11 @@ KanbanList.autoLoadingTimer = (function(){
     if ( stack != 0 ){ return; }
     clearInterval(timer_id);
   }
- 
+
   function isActive(){
       return stack >= 1 ;
   }
- 
+
   return {
     //public
     init: init,
