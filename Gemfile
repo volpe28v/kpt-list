@@ -5,7 +5,7 @@ end
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.16'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -22,7 +22,7 @@ gem 'jquery-rails', '~> 2.1.4'
 gem 'twitter-bootstrap-rails'
 
 gem 'will_paginate'
-gem 'devise', '~> 2.2.3'
+gem 'devise', '2.2.3'
 gem 'rails_autolink'
 gem 'rake'
 
