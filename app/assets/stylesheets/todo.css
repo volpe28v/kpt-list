@@ -198,6 +198,11 @@ li {
   color: #444;
 }
 
+
+#temporarily li {
+  cursor: pointer;
+}
+
 .ui-state-highlight { height: 1.5em; border-style : dashed; }
 
 #serverMsg{
