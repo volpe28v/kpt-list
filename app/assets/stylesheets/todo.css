@@ -33,7 +33,7 @@ body, input, select, textarea, button {
   height: 550px;
 }
 
-#doing,#waiting,#todo_l,#todo_h   {
+#doing,#waiting,#todo_l,#happy,#temporarily {
   list-style-type: none; margin: 0 10px 0 0; padding: 2px; border : 0px solid #aaaaaa;
   width: 99%;
   min-height: 250px;
@@ -109,7 +109,7 @@ li {
   box-shadow: 0px 1px 8px #888;
 }
 
-#doing li ,#waiting li ,#doing li ,#todo_h li, #todo_m li, #todo_l li, #done li{
+#doing li ,#waiting li ,#doing li ,#temporarily li, #todo_m li, #todo_l li, #happy li, #done li{
   margin: 0px 2px 2px 2px;
   font-weight: bold;
   font-size: 14px;
@@ -151,6 +151,22 @@ li {
   cursor: pointer;
 }
 
+#happy li {
+  border-top:1px solid #FFB6C1;
+  border-right:2px solid #C71585;
+  border-bottom:2px solid #C71585;
+  border-left:1px solid #FFB6C1;
+  background-color: #FFC0CB;
+
+  /* For WebKit (Safari, Google Chrome etc) */
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF0F5), to(#FFC0CB));
+  /* For Mozilla/Gecko (Firefox etc) */
+  background: -moz-linear-gradient(top, #FFF0F5, #FFF0CB);
+
+  color: #333;
+  cursor: pointer;
+}
+
 #todo_h li, #todo_m li, #todo_l li{
   border-top:1px solid #6b7;
   border-right:2px solid #384;
@@ -167,7 +183,7 @@ li {
   cursor: pointer;
 }
 
-#done li {
+#done li, #temporarily li {
   border-top:1px solid #aaa;
   border-right:2px solid #555;
   border-bottom:2px solid #555;
@@ -535,6 +551,10 @@ table#table-01 td {
   border-top-width: 0;
   -webkit-border-bottom-right-radius: 8px;
   -webkit-border-bottom-left-radius: 8px;
+}
+
+.memname_happy{
+  color: #DC143C;
 }
 
 #prefix,#add_todo_form_msg  {

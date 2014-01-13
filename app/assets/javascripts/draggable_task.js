@@ -41,7 +41,7 @@ KanbanList.draggableTask = (function(){
 
   // ドラッグ＆ドロップ可能にする
   function startAll(){
-    $("#doing, #waiting, #todo_m, #todo_l, #todo_h" ).sortable(option).enableSelection();
+    $("#doing, #waiting, #temporarily, #todo_l, #happy" ).sortable(option).enableSelection();
   }
 
   function startByElem(elem){

@@ -27,7 +27,7 @@ gem 'rails_autolink'
 gem 'rake'
 
 group :development, :test do
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'sqlite3'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'guard'

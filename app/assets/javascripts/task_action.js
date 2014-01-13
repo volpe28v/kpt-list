@@ -60,7 +60,7 @@ KanbanList.taskAction = (function(){
   }
 
   function returnToTodo(ret_id){
-    var to_status = "todo_m";
+    var to_status = "temporarily";
     var id = ret_id.slice(4);
 
     $("#edit_link_ms_" + id ).css("display","block");

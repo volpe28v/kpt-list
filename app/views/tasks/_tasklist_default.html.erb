@@ -30,10 +30,10 @@
   <div class="span4" id="temporarily_column" style="display: none">
     <div class="memitem">
       <div class="memproto">
-        <div class="memname_todo_m"><center>Temporarily</center></div>
+        <div class="memname_done"><center>Temporarily</center></div>
       </div>
       <div class="memdoc_waiting">
-        <ul id="todo_m" class="droptrue">
+        <ul id="temporarily" class="droptrue">
         <% @tasks[:todo_mid_tasks].each do |task| %>
           <%= render "tasks/task", {:task => task, :display => "block" } %>
         <% end %>
@@ -58,10 +58,10 @@
 
     <div class="memitem">
       <div class="memproto">
-        <div class="memname_done"><center>Happy</center></div>
+        <div class="memname_happy"><center>Happy</center></div>
       </div>
       <div class="memdoc_done">
-        <ul id="todo_h" class="droptrue">
+        <ul id="happy" class="droptrue">
         <% @tasks[:todo_high_tasks].each do |task| %>
           <%= render "tasks/task", {:task => task, :display => "block" } %>
         <% end %>

@@ -70,7 +70,7 @@ function sendCurrentTodo(id, status, msg) {
     dataType: "jsonp"
   });
 
-  if ($("#todo_m").find("li").length <= 0){
+  if ($("#temporarily").find("li").length <= 0){
     addTodoForm.hideTemporarily();
   }
 }
@@ -121,7 +121,7 @@ function updateTaskJson( update_task ){
 function addTodoResponse(add_task_info){
   var id_str = '#id_' + add_task_info.id;
 
-  $('#todo_m').prepend(add_task_info.li_html);
+  $('#temporarily').prepend(add_task_info.li_html);
 
   todayMarker.markById(add_task_info.id);
   updateCountsJson(add_task_info.task_counts);
