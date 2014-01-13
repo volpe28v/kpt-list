@@ -23,7 +23,7 @@ gem 'twitter-bootstrap-rails'
 
 gem 'will_paginate'
 gem 'devise', '2.2.3'
-gem 'rails_autolink'
+gem 'rails_autolink', '1.1.4'
 gem 'rake'
 
 group :development, :test do
