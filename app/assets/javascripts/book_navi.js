@@ -82,15 +82,11 @@ KanbanList.bookNavi = (function(){
       $('#remove_book_in').modal('hide');
 
       var dummy_id = 0
-      var filter = $('#filter_str').get(0).value;
       ajaxLoader.start(function(){
         $.ajax({
           type: "DELETE",
           cache: false,
           url: "books/" + dummy_id,
-          data: {
-            filter: filter
-          },
           dataType: "jsonp"
         });
       });
