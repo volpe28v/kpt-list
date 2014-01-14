@@ -42,13 +42,17 @@ KanbanList.addTodoForm = (function(){
     });
   }
  
-  function showTemporarily(){
+  function showTemporarily(speed){
     if ($("#temporarily_column").css("display") == "none"){
       $("#keep_column").removeClass("span6");
       $("#try_column").removeClass("span6");
       $("#keep_column").addClass("span4");
       $("#try_column").addClass("span4");
-      $("#temporarily_column").fadeIn();
+      if (speed == "fast"){
+        $("#temporarily_column").show();
+      }else{
+        $("#temporarily_column").fadeIn();
+      }
       return true;
     }
     return false;

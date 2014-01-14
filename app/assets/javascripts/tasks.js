@@ -177,8 +177,11 @@ function updateSilentJson(book_info){
   if ( last_task_list_html == book_info.task_list_html){ return; }
   last_task_list_html = book_info.task_list_html;
 
+  var show_temp = $("#temporarily_column").css("display") != "none";
   $('#task_list').html(book_info.task_list_html);
-  $('#add_todo_form_msg').focus();
+  if (show_temp){
+    addTodoForm.showTemporarily("fast");
+  }
 
   bookNavi.updateByJson( book_info.all_books );
   updateCountsJson( book_info.task_counts );
