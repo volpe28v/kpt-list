@@ -72,8 +72,8 @@ class ApplicationController < ActionController::Base
 
   def get_unfiltered_tasks(target_tasks, done_num = 10)
     tasks = {
-      :todo_high_tasks => target_tasks.by_status(:todo_h),
-      :todo_mid_tasks  => target_tasks.by_status(:todo_m),
+      :temporarily_tasks => target_tasks.by_status(:temporarily),
+      :happy_tasks => target_tasks.by_status(:happy),
       :todo_low_tasks  => target_tasks.by_status(:todo_l),
       :doing_tasks     => target_tasks.by_status(:doing),
       :waiting_tasks   => target_tasks.by_status(:waiting),
@@ -83,8 +83,8 @@ class ApplicationController < ActionController::Base
 
   def get_filtered_tasks(target_tasks, filter_word, done_num = 10 )
     tasks = {
-      :todo_high_tasks => target_tasks.by_status_and_filter(:todo_h,  filter_word),
-      :todo_mid_tasks  => target_tasks.by_status_and_filter(:todo_m,  filter_word),
+      :temporarily_tasks=> target_tasks.by_status_and_filter(:temporarily,  filter_word),
+      :happy_tasks  => target_tasks.by_status_and_filter(:happy,  filter_word),
       :todo_low_tasks  => target_tasks.by_status_and_filter(:todo_l,  filter_word),
       :doing_tasks     => target_tasks.by_status_and_filter(:doing,   filter_word),
       :waiting_tasks   => target_tasks.by_status_and_filter(:waiting, filter_word),

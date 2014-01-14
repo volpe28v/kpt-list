@@ -4,8 +4,8 @@ class Task < ActiveRecord::Base
   belongs_to :book
 
   @@status_table = {
-    :todo_h  => 0,
-    :todo_m  => 1,
+    :temporarily => 0,
+    :happy => 1,
     :todo_l  => 2,
     :doing   => 3,
     :waiting => 4,

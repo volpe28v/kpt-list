@@ -137,7 +137,7 @@ KanbanList.bookNavi = (function(){
     lists += '<li><a><input id="search-books" class="search-query span3" placeholder="Search..."/></a></li>';
 
     for(var i = 0; i < book_infos.length; i++ ){
-      var active_todo_counts = book_infos[i].todo_h + book_infos[i].todo_m + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
+      var active_todo_counts = book_infos[i].temporarily + book_infos[i].happy + book_infos[i].todo_l + book_infos[i].doing + book_infos[i].waiting;
       lists += '<li class="book_item" data-book_name="' + book_infos[i].name + '">' +
                  '<a href="#" data-book_id="' + book_infos[i].id + '">' +
                    '<table width="100%">' +
@@ -147,8 +147,8 @@ KanbanList.bookNavi = (function(){
                          '<table style="float:right" class="book-counts">' +
                            '<tr>' +
                              '<td><div class="counts-active" >' + active_todo_counts   + '</div></td>' +
-                             '<td><div class="counts todo_h '  + (book_infos[i].todo_h == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_h  + '</div></td>' +
-                             '<td><div class="counts todo_m '  + (book_infos[i].todo_m == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_m  + '</div></td>' +
+                             '<td><div class="counts temporarily'  + (book_infos[i].temporarily == 0 ? 'zero' : '')  + '" >' + book_infos[i].temporarily + '</div></td>' +
+                             '<td><div class="counts happy'  + (book_infos[i].happy == 0 ? 'zero' : '')  + '" >' + book_infos[i].happy + '</div></td>' +
                              '<td><div class="counts todo_l '  + (book_infos[i].todo_l == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_l  + '</div></td>' +
                              '<td><div class="counts doing '   + (book_infos[i].doing == 0 ? 'zero' : '')   + '" >' + book_infos[i].doing   + '</div></td>' +
                              '<td><div class="counts waiting ' + (book_infos[i].waiting == 0 ? 'zero' : '') + '" >' + book_infos[i].waiting + '</div></td>' +

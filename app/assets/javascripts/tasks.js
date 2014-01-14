@@ -87,15 +87,15 @@ function sendTaskOrder(status, order){
 
 function updateCountsJson( counts_json ){
   var state_ids = [
-                    ['#todo_h_num',  counts_json.todo_h],
-                    ['#todo_num',    counts_json.todo_m],
+                    ['#temporarily_num',  counts_json.temporarily],
+                    ['#happy_num',       counts_json.happy],
                     ['#todo_l_num',  counts_json.todo_l],
                     ['#doing_num',   counts_json.doing],
                     ['#waiting_num', counts_json.waiting],
                     ['#done_num',    counts_json.done]
                   ];
 
-  for(var i = 0; i < state_ids.length; i++ ){ 
+  for(var i = 0; i < state_ids.length; i++ ){
     var state_name = state_ids[i][0];
     var count_num  = state_ids[i][1];
     if ( $(state_name).html() != count_num ){

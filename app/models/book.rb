@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
     @@default_name
   end
 
-  [:todo_h,:todo_m,:todo_l,:doing,:waiting,:done].each{|s|
+  [:temporarily,:happy,:todo_l,:doing,:waiting,:done].each{|s|
     define_method "#{s}_count" do
       self.tasks.by_status(s).count
     end
@@ -16,7 +16,7 @@ class Book < ActiveRecord::Base
 
   def task_count_info
       book_info = self.tasks.all_counts
-      book_info['active_task'] = book_info[:todo_h] + book_info[:todo_m] + book_info[:todo_l] + book_info[:doing] + book_info[:waiting]
+      book_info['active_task'] = book_info[:temporarily] + book_info[:happy] + book_info[:todo_l] + book_info[:doing] + book_info[:waiting]
       book_info['id'] = self.id
       book_info['name'] = self.name
       book_info
