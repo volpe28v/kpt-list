@@ -163,6 +163,9 @@ function updateBookJson(book_info){
 
   bookNavi.updateByJson(book_info.all_books);
   updateCountsJson( book_info.task_counts );
+  if (book_info.task_counts.temporarily > 0){
+    addTodoForm.showTemporarily();
+  }
 
   initForTaskList();
   touchEvent.init("taskLabel");
