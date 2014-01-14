@@ -29,7 +29,7 @@
             <% end %>
             <% if params[:controller] == "tasks" and params[:action] == "index" %>
               <%= render "layouts/book_list_dropdown_li" %>
-              <li><%= link_to "Temporarily", "#", { id: "show_temporarily" } %></li>
+              <li><%= link_to raw('Temporarily <span class="label" id="temporarily_menu_num">0</span>'), "#", { id: "show_temporarily" } %></li>
             <% end %>
           </ul>
 

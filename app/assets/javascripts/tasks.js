@@ -87,22 +87,19 @@ function sendTaskOrder(status, order){
 
 function updateCountsJson( counts_json ){
   var state_ids = [
-                    ['#temporarily_num',  counts_json.temporarily],
-                    ['#happy_num',       counts_json.happy],
-                    ['#todo_l_num',  counts_json.todo_l],
-                    ['#doing_num',   counts_json.doing],
-                    ['#waiting_num', counts_json.waiting],
-                    ['#done_num',    counts_json.done]
+                    ['#temporarily_menu_num', counts_json.temporarily],
                   ];
 
   for(var i = 0; i < state_ids.length; i++ ){
     var state_name = state_ids[i][0];
     var count_num  = state_ids[i][1];
     if ( $(state_name).html() != count_num ){
-      $(state_name).hide();
-      $(state_name).css("color","red");
       $(state_name).html(count_num);
-      $(state_name).fadeIn("normal",function(){ $(this).css("color","black");});
+      if (count_num > 0){
+        $(state_name).addClass("label-info");
+      }else{
+        $(state_name).removeClass("label-info");
+      }
     }
   }
 }
