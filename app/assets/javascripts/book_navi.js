@@ -143,12 +143,11 @@ KanbanList.bookNavi = (function(){
                          '<table style="float:right" class="book-counts">' +
                            '<tr>' +
                              '<td><div class="counts-active" >' + active_todo_counts   + '</div></td>' +
-                             '<td><div class="counts temporarily'  + (book_infos[i].temporarily == 0 ? 'zero' : '')  + '" >' + book_infos[i].temporarily + '</div></td>' +
-                             '<td><div class="counts happy'  + (book_infos[i].happy == 0 ? 'zero' : '')  + '" >' + book_infos[i].happy + '</div></td>' +
                              '<td><div class="counts todo_l '  + (book_infos[i].todo_l == 0 ? 'zero' : '')  + '" >' + book_infos[i].todo_l  + '</div></td>' +
-                             '<td><div class="counts doing '   + (book_infos[i].doing == 0 ? 'zero' : '')   + '" >' + book_infos[i].doing   + '</div></td>' +
                              '<td><div class="counts waiting ' + (book_infos[i].waiting == 0 ? 'zero' : '') + '" >' + book_infos[i].waiting + '</div></td>' +
-                             '<td><div class="counts done '    + (book_infos[i].done == 0 ? 'zero' : '')    + '" >' + book_infos[i].done    + '</div></td>' +
+                             '<td><div class="counts temporarily '  + (book_infos[i].temporarily == 0 ? 'zero' : '')  + '" >' + book_infos[i].temporarily + '</div></td>' +
+                             '<td><div class="counts doing '   + (book_infos[i].doing == 0 ? 'zero' : '')   + '" >' + book_infos[i].doing   + '</div></td>' +
+                             '<td><div class="counts happy '  + (book_infos[i].happy == 0 ? 'zero' : '')  + '" >' + book_infos[i].happy + '</div></td>' +
                            '</tr>' +
                          '</table>' +
                        '</td>' +

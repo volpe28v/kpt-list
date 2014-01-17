@@ -230,7 +230,7 @@ li {
   background: -moz-linear-gradient(top, #E0F0F6, #90C0C6);
 }
 
-.todo_h{
+.happy{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
@@ -242,27 +242,9 @@ li {
   background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#cec), to(#40cF40));
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF0F5), to(#FFC0CB));
   /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #cec, #40cF40);
-
-}
-
-.todo{
-  padding: 4px;
-  border: #E3E3E3 solid;
-  border-width: 0 0 1px 1px;
-  font-weight: bold;
-  line-height: 100%;
-  text-align: center;
-  background-color: #88de88;
-  background-position: center bottom;
-  background-repeat:  repeat;
-
-  /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#beb), to(#7CFC00));
-  /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #beb, #7CFC00);
+  background: -moz-linear-gradient(top, #FFF0F5, #FFF0CB);
 }
 
 .todo_l{
@@ -277,9 +259,9 @@ li {
   background-repeat:  repeat;
 
   /* For WebKit (Safari, Google Chrome etc) */
-  background: -webkit-gradient(linear, left top, left bottom, from(#df7), to(#ADFF2F));
+  background: -webkit-gradient(linear, left top, left bottom, from(#D5FED5), to(#80DE80));
   /* For Mozilla/Gecko (Firefox etc) */
-  background: -moz-linear-gradient(top, #df7, #ADFF2F);
+  background: -moz-linear-gradient(top, #D5FED5, #80DE80);
 }
 
 .waiting{
@@ -300,7 +282,7 @@ li {
 
 }
 
-.done{
+.temporarily, .done{
   padding: 4px;
   border: #E3E3E3 solid;
   border-width: 0 0 1px 1px;
