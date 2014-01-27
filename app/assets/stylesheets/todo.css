@@ -659,3 +659,8 @@ footer span{
   font-weight: normal;
   color: #555;
 }
+
+#download_link {
+  text-align: right;
+  margin: 10px;
+}
