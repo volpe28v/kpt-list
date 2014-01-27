@@ -87,6 +87,48 @@ class Task < ActiveRecord::Base
     self.where('created_at >= ? and created_at <= ?', 1.day.ago, Time.now).count
   end
 
+  def self.csv(options = {})
+    CSV.generate(options) do |csv|
+      keep_tasks = self.by_status(:todo_l)
+      try_tasks = self.by_status(:doing)
+      problem_tasks = self.by_status(:waiting)
+      happy_tasks = self.by_status(:happy)
+
+      csv << ["Keep", "Try"]
+      max_len = [keep_tasks.size, try_tasks.size].max
+      for i in 0...max_len
+        row = []
+        if t = keep_tasks[i]
+          row << t.msg
+        else
+          row << ""
+        end
+
+        if t = try_tasks[i]
+          row << t.msg
+        end
+        csv << row
+      end
+
+      csv << []
+      csv << ["Problem", "Happy"]
+      max_len = [problem_tasks.size, happy_tasks.size].max
+      for i in 0...max_len
+        row = []
+        if t = problem_tasks[i]
+          row << t.msg
+        else
+          row << ""
+        end
+
+        if t = happy_tasks[i]
+          row << t.msg
+        end
+        csv << row
+      end
+    end
+  end
+
   def status_sym
     @@status_table.key(status)
   end
@@ -105,8 +147,8 @@ class Task < ActiveRecord::Base
     nil
   end
 
-  def msg_without_book_name(book)
-    return self.msg if book == nil
+  def msg_without_book_name
+    return self.msg if self.book == nil
 
     @@book_name_patterns.each{|pattern|
       if pattern =~ self.msg
@@ -115,5 +157,13 @@ class Task < ActiveRecord::Base
     }
 
     self.msg
+  end
+
+  def book_name
+    if self.book != nil
+      self.book.name
+    else
+      ""
+    end
   end
 end

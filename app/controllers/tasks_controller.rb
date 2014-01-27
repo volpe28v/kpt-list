@@ -8,6 +8,19 @@ class TasksController < ApplicationController
   end
 
   def index
+    session[:book_id] = params[:book_id] if params[:book_id] != nil
+    set_layout(params[:layout]) if params[:layout] != nil
+
+    @tasks = current_tasks
+    @keep_tasks = @tasks.by_status(:todo_l)
+    @try_tasks = @tasks.by_status(:doing)
+    @problem_tasks = @tasks.by_status(:waiting)
+    @happy_tasks = @tasks.by_status(:happy)
+    respond_to do |format|
+      format.html
+      format.csv { send_data(current_tasks.csv) }
+      format.xls
+    end
   end
 
   def create
